@@ -27,6 +27,17 @@ function init() {
     // getNewShuffledDeck();
 }
 
+function hnadlePlay(){
+  let pCard = pDeck.shift();
+  pHand.push(pCard);
+  let cCard = cDeck.shift();
+  pHand.push(cCard);
+}
+
+
+function render() {
+
+}
 
 function getNewShuffledDeck() {
   // Create a copy of the masterDeck (leave masterDeck untouched!)
