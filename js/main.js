@@ -11,10 +11,12 @@ let pDeck, cDeck, pHand, cHand;
 /*----- cached element references -----*/
 
 init();
- 
+
+let pHandEl = document.querySelector('#pHand');
+let cHandEl = document.querySelector('#cHand');
 
 /*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', init);
+document.querySelector('button').addEventListener('click', handlePlay);
 
 /*----- functions -----*/
 
@@ -23,20 +25,46 @@ function init() {
   let shuffledDeck = getNewShuffledDeck();
   pDeck = shuffledDeck.splice(0,26);
   cDeck = shuffledDeck;
+  pHand = [];
+  cHand = [];
   render();
     // getNewShuffledDeck();
 }
 
-function hnadlePlay(){
+function handlePlay(){
+  console.log('We Da Best')
   let pCard = pDeck.shift();
-  pHand.push(pCard);
+  pHand.unshift(pCard);
   let cCard = cDeck.shift();
-  pHand.push(cCard);
+  cHand.unshift(cCard);
+  render();
 }
 
 
 function render() {
+  if (pHand.length > 0 && cHand.length > 0){
+    let pHandTemplate = `<div class="card ${pHand[0].face}"></div>`;
+    let cHandTemplate = `<div class="card ${cHand[0].face}"></div>`;
+    pHandEl.innerHTML = pHandTemplate;
+    cHandEl.innerHTML = cHandTemplate;
+  }
+  
+}
 
+function buildMasterDeck() {
+  const deck = [];
+  // Use nested forEach to generate card objects
+  suits.forEach(function(suit) {
+    ranks.forEach(function(rank) {
+      deck.unshift({
+        // The ‘face’ property maps to the library’s CSS classes for cards
+        face: `${suit}${rank}`,
+        // Setting the ‘value’ property for game of blackjack, not war
+        value: Number(rank) || (rank === 'A' ? 11 : 10)
+      });
+    });
+  });
+  return deck;
 }
 
 function getNewShuffledDeck() {
@@ -51,25 +79,3 @@ function getNewShuffledDeck() {
   }
   return newShuffledDeck;
 }
-
-function buildMasterDeck() {
-  const deck = [];
-  suits.forEach(function(suit) {
-    ranks.forEach(function(rank) {
-      deck.push({
-        face: `${suit}${rank}`,
-      });
-    });
-  });
-  return deck;
-}
-// Initialize all state, then call render 
-
-// function renderBoard() {
-  
-// }
-  
-// splice deck into two different arrays- pHand & cHand
-
-// Update all impacted state, then call render
-
