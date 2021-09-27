@@ -25,7 +25,7 @@
   /* Default sizes for cards (size based off the font). */
   /* Optional styles for cards: borderless and drop shadow. */
   /* Not a card, but a card-shaped outline to represent a
-     droppable place, like an empty pile. */ }
+     droppable place, like an empty pile. */ }m 
   .card.small {
     font-size: 12px; }
   .card.large {
