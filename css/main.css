@@ -21,8 +21,8 @@ h1 {
 
 #board {
   display: grid;
-  grid-template-columns: repeat(5, 28vmin);
-  grid-template-rows: repeat(3, 25vmin);
+  grid-template-columns: repeat(5, 20vmin);
+  grid-template-rows: repeat(3, 20vmin);
   font-size: 4.5vmin;
 }
 
