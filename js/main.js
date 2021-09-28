@@ -32,14 +32,23 @@ function init() {
 }
 
 function handlePlay(){
-  console.log('We Da Best')
+
   let pCard = pDeck.shift();
   pHand.unshift(pCard);
   let cCard = cDeck.shift();
   cHand.unshift(cCard);
+  winningHand();
   render();
 }
 
+function winningHand(){
+  if (pHand[0].value === cHand[0].value){
+    winner = 't';
+  } else if (pHand[0].value > cHand[0].value) {
+    winner = pHand;
+  } else {
+    winner = cHand;
+  }}
 
 function render() {
   if (pHand.length > 0 && cHand.length > 0){
@@ -48,7 +57,6 @@ function render() {
     pHandEl.innerHTML = pHandTemplate;
     cHandEl.innerHTML = cHandTemplate;
   }
-  
 }
 
 function buildMasterDeck() {
@@ -60,7 +68,7 @@ function buildMasterDeck() {
         // The ‘face’ property maps to the library’s CSS classes for cards
         face: `${suit}${rank}`,
         // Setting the ‘value’ property for game of blackjack, not war
-        value: Number(rank) || (rank === 'A' ? 11 : 10)
+        value: Number(rank) || (rank === 'A' ? 14 : 10) || (rank === 'J' ? 11 : 10) || (rank === 'Q' ? 12 : 10) || (rank === 'K' ? 13 : 10)
       });
     });
   });
@@ -78,4 +86,4 @@ function getNewShuffledDeck() {
     newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
   return newShuffledDeck;
-}
+ }
