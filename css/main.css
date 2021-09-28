@@ -21,8 +21,8 @@ h1 {
 
 #board {
   display: grid;
-  grid-template-columns: repeat(5, 20vmin);
-  grid-template-rows: repeat(3, 20vmin);
+  grid-template-columns: 25vmin 25vmin 20vmin 25vmin 25vmin;
+  grid-template-rows: 25vmin 25vmin 25vmin;
   font-size: 4.5vmin;
 }
 
@@ -43,4 +43,9 @@ h1 {
 footer  {
   display: flex;
   justify-content: center;
+}
+
+#war  {
+  visibility: hidden;
+  text-align: center;
 }

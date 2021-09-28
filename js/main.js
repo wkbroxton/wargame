@@ -1,6 +1,13 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
-const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+const ranks = ['05', '05', '05', '05', '05', '05', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+
+const faceLookup = {
+  "J" : 11,
+  "Q" : 12,
+  "K" : 13,
+  "A" : 14
+}
 
 const masterDeck = buildMasterDeck();
 // const shuffledHand = showShuffledDeck();
@@ -8,15 +15,21 @@ const masterDeck = buildMasterDeck();
 /*----- app's state (variables) -----*/
 let pDeck, cDeck, pHand, cHand;
 
+let war; //= warBegins();
+
 /*----- cached element references -----*/
 
 init();
 
 let pHandEl = document.querySelector('#pHand');
 let cHandEl = document.querySelector('#cHand');
+let warBtnEl = document.querySelector('#war');
+let playBtnEl = document.querySelector('#play');
+
 
 /*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', handlePlay);
+playBtnEl.addEventListener('click', handlePlay);
+warBtnEl.addEventListener('click', warBegins);
 
 /*----- functions -----*/
 
@@ -37,19 +50,35 @@ function handlePlay(){
   pHand.unshift(pCard);
   let cCard = cDeck.shift();
   cHand.unshift(cCard);
-  winningHand();
   render();
+  winningHand();
 }
 
 function winningHand(){
-  if (pHand[0].value === cHand[0].value){
-    winner = 't';
-  } else if (pHand[0].value > cHand[0].value) {
-    winner = pHand;
+  if (pHand[0].value === cHand[0].value) return renderWarButton();
+  if (pHand[0].value > cHand[0].value) {
+      pDeck.push(...cHand, ...pHand);
+      cHand = [];
+      pHand = [];
+      pDeck.push(...pHand.splice(0));
   } else {
-    winner = cHand;
+      cDeck.push(...pHand.splice(0), ...cHand.splice(0));
+    }
     render();
-  }}
+  }
+
+  function renderWarButton(){
+      warBtnEl.style.visibility = "visible";
+      playBtnEl.style.visibility = "hidden";
+  }
+
+  function warBegins() {
+    pHand.unshift(pDeck.pop(), pDeck.pop(), pDeck.pop());
+    cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
+    render();
+    winningHand();
+  };
+
 
 function render() {
   if (pHand.length > 0 && cHand.length > 0){
@@ -69,7 +98,7 @@ function buildMasterDeck() {
         // The ‘face’ property maps to the library’s CSS classes for cards
         face: `${suit}${rank}`,
         // Setting the ‘value’ property for game of blackjack, not war
-        value: Number(rank) || (rank === 'A' ? 14 : 10) || (rank === 'J' ? 11 : 10) || (rank === 'Q' ? 12 : 10) || (rank === 'K' ? 13 : 10)
+        value: Number(rank) || faceLookup[rank]
       });
     });
   });
