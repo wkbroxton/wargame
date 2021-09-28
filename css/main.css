@@ -21,10 +21,9 @@ h1 {
 
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 25vmin);
-  grid-template-rows: repeat(3, 40vmin);
-  gap: .01vmin;
-  font-size: 7vmin;
+  grid-template-columns: repeat(5, 28vmin);
+  grid-template-rows: repeat(3, 25vmin);
+  font-size: 4.5vmin;
 }
 
 #p-deck, #c-deck, #p-inPlay, #c-inPlay {
@@ -37,9 +36,11 @@ h1 {
   justify-content: center;
 }
 
+#button {
+  size: 50px;
+
+}
 footer  {
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  margin: 5px;;
+  justify-content: center;
 }

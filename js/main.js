@@ -48,6 +48,7 @@ function winningHand(){
     winner = pHand;
   } else {
     winner = cHand;
+    render();
   }}
 
 function render() {
