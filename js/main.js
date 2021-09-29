@@ -4,10 +4,10 @@ const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
 const faceLookup = {
-  "J" : 11,
-  "Q" : 12,
-  "K" : 13,
-  "A" : 14
+  "J": 11,
+  "Q": 12,
+  "K": 13,
+  "A": 14
 }
 
 const masterDeck = buildMasterDeck();
@@ -19,14 +19,14 @@ let pDeck, cDeck, pHand, cHand, war;
 
 /*----- cached element references -----*/
 
-
-
 let pHandEl = document.querySelector('#pHand');
 let cHandEl = document.querySelector('#cHand');
 let warBtnEl = document.querySelector('#war');
 let playBtnEl = document.querySelector('#play');
 let replayBtnEl = document.querySelector('#replay');
 
+let pCountEl = document.querySelector("#pCardCount")
+let cCountEl = document.querySelector("#cCardCount")
 
 /*----- event listeners -----*/
 
@@ -34,14 +34,13 @@ playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
 replayBtnEl.addEventListener('click', reset);
 
-
 /*----- functions -----*/
 
 init();
 
 function init() {
   let shuffledDeck = getNewShuffledDeck();
-  pDeck = shuffledDeck.splice(0,26);
+  pDeck = shuffledDeck.splice(0, 26);
   cDeck = shuffledDeck;
   pHand = [];
   cHand = [];
@@ -49,7 +48,7 @@ function init() {
 
 }
 
-function handlePlay(){
+function handlePlay() {
 
   let pCard = pDeck.shift();
   pHand.unshift(pCard);
@@ -60,59 +59,60 @@ function handlePlay(){
   winner();
 }
 
-function winningHand(){
+function winningHand() {
   if (pHand[0].value === cHand[0].value) return renderWarButton();
   if (pHand[0].value > cHand[0].value) {
-      pDeck.push(...cHand, ...pHand);
-      cHand = [];
-      pHand = [];
-      pDeck.push(...pHand.splice(0));
+    pDeck.push(...cHand, ...pHand);
+    cHand = [];
+    pHand = [];
+    pDeck.push(...pHand.splice(0));
   } else {
-      cDeck.push(...pHand.splice(0), ...cHand.splice(0));
-    }
-    render();
-    // winner();
-  }  //winner
-
-  function renderWarButton(){
-      warBtnEl.style.visibility = "visible";
-      playBtnEl.style.visibility = "hidden";
-        msgEl.innerHTML = "WELCOME TO THE WARZONE";
+    cDeck.push(...pHand.splice(0), ...cHand.splice(0));
   }
+}
 
-  function warBegins() {
-    pHand.unshift(pDeck.pop(), pDeck.pop(), pDeck.pop());
-    cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
-    render();
-    winningHand();
-    unrenderWarButton();
-  };
+function renderWarButton() {
+  warBtnEl.style.visibility = "visible";
+  playBtnEl.style.visibility = "hidden";
+  msgEl.innerHTML = "WELCOME TO THE WARZONE";
+}
 
- function unrenderWarButton(){
-    if(pHand !== cHand){
-      warBtnEl.style.visibility = "hidden";
-      playBtnEl.style.visibility = "visible";{
-        msgEl.innerHTML = "WHO SHALL BE VICTORIOUS?!?!";
-    } 
+function warBegins() {
+  pHand.unshift(pDeck.pop(), pDeck.pop(), pDeck.pop());
+  cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
+  render();
+  winningHand();
+  unrenderWarButton();
+};
+
+function unrenderWarButton() {
+  if (pHand !== cHand) {
+    warBtnEl.style.visibility = "hidden";
+    playBtnEl.style.visibility = "visible"; {
+      msgEl.innerHTML = "WHO SHALL BE VICTORIOUS?!?!";
     }
   }
+}
 
 function render() {
-  if (pHand.length > 0 && cHand.length > 0){
+  if (pHand.length > 0 && cHand.length > 0) {
     let pHandTemplate = `<div class="card ${pHand[0].face}"></div>`;
     let cHandTemplate = `<div class="card ${cHand[0].face}"></div>`;
     pHandEl.innerHTML = pHandTemplate;
     cHandEl.innerHTML = cHandTemplate;
-  } //else {
-  //     pHandEl.innerHTML =  `<div class="card"></div>`;
-  //     cHandEl.innerHTML =  `<div class="card"></div>`; 
-  // }
+  } else {
+    pHandEl.innerHTML = `<div class="card back"></div>`;
+    cHandEl.innerHTML = `<div class="card back"></div>`;
+  }
+  pCountEl.innerText = pDeck.length + pHand.length;
+  cCountEl.innerText = cDeck.length + cHand.length;
 }
+
 
 function buildMasterDeck() {
   const deck = [];
-  suits.forEach(function(suit) {
-    ranks.forEach(function(rank) {
+  suits.forEach(function (suit) {
+    ranks.forEach(function (rank) {
       deck.unshift({
         face: `${suit}${rank}`,
         value: Number(rank) || faceLookup[rank]
@@ -130,27 +130,24 @@ function getNewShuffledDeck() {
     newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
   return newShuffledDeck;
- }
+}
 
- function winner(){
-   if (pDeck.length >= '35'){
-     winner = pHand;
-     playBtnEl.style.visibility = "hidden";
-     msgEl.innerHTML = "Playstation Wins!";
-     replayBtnEl.style.visibility = "visible";
-  } else if(cDeck.length >= '35'){
-     winner = cHand; 
-     playBtnEl.style.visibility = "hidden";
-     msgEl.innerHTML = "XBox Wins";
-     replayBtnEl.style.visibility = "visible";
-    }
-  } 
-  
-  function reset(){
-    msgEl.innerHTML = "The WAR of 9th Gen Consoles";
-    playBtnEl.style.visibility = "visible";
-    warBtnEl.style.visibility = "hidden";
-    replayBtnEl.style.visibility = "hidden";
-    init();
+function winner() {
+  if (pDeck.length >= 35) {
+    playBtnEl.style.visibility = "hidden";
+    msgEl.innerHTML = "Playstation Wins!";
+    replayBtnEl.style.visibility = "visible";
+  } else if (cDeck.length >= 35) {
+    playBtnEl.style.visibility = "hidden";
+    msgEl.innerHTML = "XBox Wins";
+    replayBtnEl.style.visibility = "visible";
   }
-  
+}
+
+function reset() {
+  msgEl.innerHTML = "The WAR of 9th Gen Consoles";
+  playBtnEl.style.visibility = "visible";
+  warBtnEl.style.visibility = "hidden";
+  replayBtnEl.style.visibility = "hidden";
+  init();
+}
