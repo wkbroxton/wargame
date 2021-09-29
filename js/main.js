@@ -19,21 +19,25 @@ let pDeck, cDeck, pHand, cHand, war;
 
 /*----- cached element references -----*/
 
-init();
+
 
 let pHandEl = document.querySelector('#pHand');
 let cHandEl = document.querySelector('#cHand');
 let warBtnEl = document.querySelector('#war');
 let playBtnEl = document.querySelector('#play');
+let replayBtnEl = document.querySelector('#replay');
 
 
 /*----- event listeners -----*/
 
 playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
+replayBtnEl.addEventListener('click', reset);
+
 
 /*----- functions -----*/
 
+init();
 
 function init() {
   let shuffledDeck = getNewShuffledDeck();
@@ -72,9 +76,8 @@ function winningHand(){
 
   function renderWarButton(){
       warBtnEl.style.visibility = "visible";
-      playBtnEl.style.visibility = "hidden";{
+      playBtnEl.style.visibility = "hidden";
         msgEl.innerHTML = "WELCOME TO THE WARZONE";
-    } 
   }
 
   function warBegins() {
@@ -100,7 +103,10 @@ function render() {
     let cHandTemplate = `<div class="card ${cHand[0].face}"></div>`;
     pHandEl.innerHTML = pHandTemplate;
     cHandEl.innerHTML = cHandTemplate;
-  }
+  } //else {
+  //     pHandEl.innerHTML =  `<div class="card"></div>`;
+  //     cHandEl.innerHTML =  `<div class="card"></div>`; 
+  // }
 }
 
 function buildMasterDeck() {
@@ -129,20 +135,22 @@ function getNewShuffledDeck() {
  function winner(){
    if (pDeck.length >= '35'){
      winner = pHand;
-      msgEl.innerHTML = "Playstation Wins!";
-      playBtnEl.innerHTML = "Play Again?"
+     playBtnEl.style.visibility = "hidden";
+     msgEl.innerHTML = "Playstation Wins!";
+     replayBtnEl.style.visibility = "visible";
   } else if(cDeck.length >= '35'){
-     winner = cHand; {
-      msgEl.innerHTML = "XBox Wins";
-      playBtnEl.innerHTML = "Play Again?"
-      }
-    } 
-  }
+     winner = cHand; 
+     playBtnEl.style.visibility = "hidden";
+     msgEl.innerHTML = "XBox Wins";
+     replayBtnEl.style.visibility = "visible";
+    }
+  } 
   
-
-  // function playAgain(){
-  //   if(winner === true)
-  //   playBtnEl.innerHTML = "Play Again?";
-  //   return init(); 
-  //   } console.log("Hey You");
+  function reset(){
+    msgEl.innerHTML = "The WAR of 9th Gen Consoles";
+    playBtnEl.style.visibility = "visible";
+    warBtnEl.style.visibility = "hidden";
+    replayBtnEl.style.visibility = "hidden";
+    init();
+  }
   

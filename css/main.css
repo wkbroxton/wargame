@@ -51,4 +51,12 @@ footer  {
 #war  {
   visibility: hidden;
   text-align: center;
+  size: 150px;
+}
+
+
+#replay  {
+  visibility: hidden;
+  text-align: center;
+  size: 200px;
 }
