@@ -27,8 +27,11 @@ h1 {
 }
 
 #p-deck, #c-deck, #p-inPlay, #c-inPlay {
+  display: flex;
   border: 0.1vmin solid grey;
   padding: 50px;
+  /* justify-self: center; */
+  text-align: center;
 }
 
 #TP, #TX {

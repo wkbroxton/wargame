@@ -88,7 +88,9 @@ function winningHand(){
  function unrenderWarButton(){
     if(pHand !== cHand){
       warBtnEl.style.visibility = "hidden";
-      playBtnEl.style.visibility = "visible";
+      playBtnEl.style.visibility = "visible";{
+        msgEl.innerHTML = "WHO SHALL BE VICTORIOUS?!?!";
+    } 
     }
   }
 
@@ -128,16 +130,19 @@ function getNewShuffledDeck() {
    if (pDeck.length >= '35'){
      winner = pHand;
       msgEl.innerHTML = "Playstation Wins!";
+      playBtnEl.innerHTML = "Play Again?"
   } else if(cDeck.length >= '35'){
      winner = cHand; {
       msgEl.innerHTML = "XBox Wins";
-     } 
-    } //playAgain():
+      playBtnEl.innerHTML = "Play Again?"
+      }
+    } 
   }
+  
 
   // function playAgain(){
-  //   if(winner === true){
+  //   if(winner === true)
   //   playBtnEl.innerHTML = "Play Again?";
-  //   init(); 
-  //   }
-  // }
+  //   return init(); 
+  //   } console.log("Hey You");
+  
