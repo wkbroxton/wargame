@@ -1,4 +1,5 @@
 /*----- constants -----*/
+
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
@@ -10,12 +11,10 @@ const faceLookup = {
 }
 
 const masterDeck = buildMasterDeck();
-// const shuffledHand = showShuffledDeck();
 
 /*----- app's state (variables) -----*/
-let pDeck, cDeck, pHand, cHand;
 
-let war; //= warBegins();
+let pDeck, cDeck, pHand, cHand, war;
 
 /*----- cached element references -----*/
 
@@ -28,6 +27,7 @@ let playBtnEl = document.querySelector('#play');
 
 
 /*----- event listeners -----*/
+
 playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
 
@@ -41,7 +41,7 @@ function init() {
   pHand = [];
   cHand = [];
   render();
-    // getNewShuffledDeck();
+
 }
 
 function handlePlay(){
@@ -52,6 +52,7 @@ function handlePlay(){
   cHand.unshift(cCard);
   render();
   winningHand();
+  winner();
 }
 
 function winningHand(){
@@ -77,8 +78,15 @@ function winningHand(){
     cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
     render();
     winningHand();
+    unrenderWarButton();
   };
 
+ function unrenderWarButton(){
+    if(pHand !== cHand){
+      warBtnEl.style.visibility = "hidden";
+      playBtnEl.style.visibility = "visible";
+    }
+  }
 
 function render() {
   if (pHand.length > 0 && cHand.length > 0){
@@ -91,13 +99,10 @@ function render() {
 
 function buildMasterDeck() {
   const deck = [];
-  // Use nested forEach to generate card objects
   suits.forEach(function(suit) {
     ranks.forEach(function(rank) {
       deck.unshift({
-        // The ‘face’ property maps to the library’s CSS classes for cards
         face: `${suit}${rank}`,
-        // Setting the ‘value’ property for game of blackjack, not war
         value: Number(rank) || faceLookup[rank]
       });
     });
@@ -106,14 +111,24 @@ function buildMasterDeck() {
 }
 
 function getNewShuffledDeck() {
-  // Create a copy of the masterDeck (leave masterDeck untouched!)
   const tempDeck = [...masterDeck];
   const newShuffledDeck = [];
   while (tempDeck.length) {
-    // Get a random index for a card still in the tempDeck
     const rndIdx = Math.floor(Math.random() * tempDeck.length);
-    // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
     newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
   return newShuffledDeck;
  }
+
+ function winner(){
+   if (pDeck.length >= '35'){
+     winner = pHand;
+     prompt('PS5 Wins!');
+   } else if(cDeck.length >= '35'){
+     winner = cHand;
+     prompt('XBox Wins!')
+   } 
+    // render();
+    // return init();
+ } 
+
