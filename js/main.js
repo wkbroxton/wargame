@@ -11,6 +11,7 @@ const faceLookup = {
 }
 
 const masterDeck = buildMasterDeck();
+const msgEl = document.querySelector('h1');
 
 /*----- app's state (variables) -----*/
 
@@ -66,11 +67,14 @@ function winningHand(){
       cDeck.push(...pHand.splice(0), ...cHand.splice(0));
     }
     render();
-  }
+    // winner();
+  }  //winner
 
   function renderWarButton(){
       warBtnEl.style.visibility = "visible";
-      playBtnEl.style.visibility = "hidden";
+      playBtnEl.style.visibility = "hidden";{
+        msgEl.innerHTML = "WELCOME TO THE WARZONE";
+    } 
   }
 
   function warBegins() {
@@ -123,12 +127,17 @@ function getNewShuffledDeck() {
  function winner(){
    if (pDeck.length >= '35'){
      winner = pHand;
-     prompt('PS5 Wins!');
-   } else if(cDeck.length >= '35'){
-     winner = cHand;
-     prompt('XBox Wins!')
-   } 
-    // render();
-    // return init();
- } 
+      msgEl.innerHTML = "Playstation Wins!";
+  } else if(cDeck.length >= '35'){
+     winner = cHand; {
+      msgEl.innerHTML = "XBox Wins";
+     } 
+    } //playAgain():
+  }
 
+  // function playAgain(){
+  //   if(winner === true){
+  //   playBtnEl.innerHTML = "Play Again?";
+  //   init(); 
+  //   }
+  // }
