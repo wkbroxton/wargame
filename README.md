@@ -15,11 +15,13 @@ Welcome to a themed version of the classic card game of War! As an avid "casual"
 
 ☐ Technologies Used: 
 
-    JavaScript, HTML, CSS...
+    JavaScript, HTML, CSS
 
     Functionality inspired by: https://cardgames.io/war/
 
     SHOUT OUT TO https://css-tricks.com/write-code-get-confetti/  FOR CONFETTI!!!
+
+    And yours truly curated the sound ;)
 
 ☐ Getting Started: 
 
@@ -53,3 +55,12 @@ Welcome to a themed version of the classic card game of War! As an avid "casual"
 git add -A
 git commit -m 'changes'
 git push --> -->
+
+<!-- When you have commits on main that you want to deploy, it's time to merge those commits into the gh-pages branch:
+
+Checkout the gh-pages branch: git checkout gh-pages
+Merge the commits from main: git merge main
+Deploy the changes: git push origin gh-pages
+Now your deployed application is up to date!
+
+Be sure to switch back to the main branch! -->

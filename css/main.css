@@ -17,12 +17,13 @@ h1 {
   color: Black;
   padding: 5px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 #board {
   display: grid;
   grid-template-columns: 25vmin 25vmin 20vmin 25vmin 25vmin;
-  grid-template-rows: 25vmin 25vmin 25vmin;
+  grid-template-rows: 25vmin 15vmin 25vmin;
   font-size: 4.5vmin;
 }
 

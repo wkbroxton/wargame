@@ -13,6 +13,7 @@ const faceLookup = {
 const masterDeck = buildMasterDeck();
 const msgEl = document.querySelector('h1');
 
+
 /*----- app's state (variables) -----*/
 
 let pDeck, cDeck, pHand, cHand, war;
@@ -28,11 +29,18 @@ let replayBtnEl = document.querySelector('#replay');
 let pCountEl = document.querySelector("#pCardCount")
 let cCountEl = document.querySelector("#cCardCount")
 
+const player = new Audio();
+const bgPlayer = document.getElementById('bg-player');
+const bgCheckbox = document.querySelector('input[type="checkbox"]');
+
 /*----- event listeners -----*/
 
 playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
 replayBtnEl.addEventListener('click', reset);
+
+// document.getElementById('play-btn').addEventListener('click', handlePlaySound);
+bgCheckbox.addEventListener('change', handleBgChanged);
 
 /*----- functions -----*/
 
@@ -46,6 +54,20 @@ function init() {
   cHand = [];
   render();
 
+}
+
+// function handlePlaySound(){
+//   const selSoundImp = document.querySelector('input [name= "sound"]; checked');
+//   handlePlaySound(selSoundImp.value);
+// }
+
+// function playSound(name) {
+//   bgPlayer.src = sounds[name];
+//   bgPlayer.play();
+// }
+
+function handleBgChanged(){
+  bgCheckbox.checked ? bgPlayer.play() : bgPlayer.onpause();
 }
 
 function handlePlay() {
@@ -140,14 +162,14 @@ function winner() {
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      particleCount: 1000
+      particleCount: 3000
     });
   } else if (cDeck.length >= 35) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      particleCount: 1000
+      particleCount: 3000
     });
   }
 }
