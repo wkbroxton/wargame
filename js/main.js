@@ -67,7 +67,7 @@ function init() {
 // }
 
 function handleBgChanged(){
-  bgCheckbox.checked ? bgPlayer.play() : bgPlayer.onpause();
+  bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
 }
 
 function handlePlay() {
@@ -96,6 +96,7 @@ function winningHand() {
 }
 
 function renderWarButton() {
+  document.querySelector('body').style.backgroundColor = 'red';
   warBtnEl.style.visibility = "visible";
   playBtnEl.style.visibility = "hidden";
   msgEl.innerHTML = "WELCOME TO THE WARZONE";
@@ -111,6 +112,7 @@ function warBegins() {
 
 function unrenderWarButton() {
   if (pHand !== cHand) {
+    document.querySelector('body').style.backgroundColor = 'white';
     warBtnEl.style.visibility = "hidden";
     playBtnEl.style.visibility = "visible"; {
       msgEl.innerHTML = "WHO SHALL BE VICTORIOUS?!?!";
@@ -162,14 +164,14 @@ function winner() {
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      particleCount: 3000
+      spread: 3000
     });
   } else if (cDeck.length >= 35) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      particleCount: 3000
+      spread: 3000
     });
   }
 }
