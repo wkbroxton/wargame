@@ -62,11 +62,13 @@ function handlePlay() {
 function winningHand() {
   if (pHand[0].value === cHand[0].value) return renderWarButton();
   if (pHand[0].value > cHand[0].value) {
+    msgEl.innerHTML = "PS5 Wins the Hand";
     pDeck.push(...cHand, ...pHand);
     cHand = [];
     pHand = [];
     pDeck.push(...pHand.splice(0));
   } else {
+    msgEl.innerHTML = "XBox Wins the Hand";
     cDeck.push(...pHand.splice(0), ...cHand.splice(0));
   }
 }
@@ -101,8 +103,8 @@ function render() {
     pHandEl.innerHTML = pHandTemplate;
     cHandEl.innerHTML = cHandTemplate;
   } else {
-    pHandEl.innerHTML = `<div class="card back"></div>`;
-    cHandEl.innerHTML = `<div class="card back"></div>`;
+    pHandEl.innerHTML = '';
+    cHandEl.innerHTML = '';
   }
   pCountEl.innerText = pDeck.length + pHand.length;
   cCountEl.innerText = cDeck.length + cHand.length;
@@ -137,10 +139,16 @@ function winner() {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
+    confetti({
+      particleCount: 1000
+    });
   } else if (cDeck.length >= 35) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
+    confetti({
+      particleCount: 1000
+    });
   }
 }
 

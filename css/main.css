@@ -26,12 +26,13 @@ h1 {
   font-size: 4.5vmin;
 }
 
-#p-deck, #c-deck, #p-inPlay, #c-inPlay {
+#pDeck, #cDeck, #pInPlay, #cInPlay {
   display: flex;
   border: 0.1vmin solid grey;
   padding: 50px;
-  /* justify-self: center; */
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 10px 10px 5px black;
 }
 
 #TP, #TX {
@@ -39,10 +40,19 @@ h1 {
   justify-content: center;
 }
 
-#button {
-  size: 50px;
-
+#play {
+  border: 1vmin solid rgb(49, 49, 49);
+  font-family: sans-serif;
+  background-color: black;
+  color: white;
+  border-radius: 12.8px;
+  padding: 15px;
+  font-weight: bolder;
+  position: relative; top: -30px;
+  position: relative; left: -20px;
+  box-shadow: 2.5px 5px 5px 2.5px black;
 }
+
 footer  {
   display: flex;
   justify-content: space-around;
@@ -51,12 +61,58 @@ footer  {
 #war  {
   visibility: hidden;
   text-align: center;
-  size: 150px;
+  border: 1vmin solid rgb(49, 49, 49);
+  font-family: sans-serif;
+  background-color: black;
+  color: white;
+  border-radius: 12.8px;
+  padding: 15px;
+  font-weight: bolder;
+  position: relative; top: -30px;
+  position: relative; left: -20px;
+  box-shadow: 2.5px 5px 5px 2.5px black;
 }
 
 
 #replay  {
   visibility: hidden;
   text-align: center;
-  size: 200px;
+  border: 1vmin solid rgb(49, 49, 49);
+  font-family: sans-serif;
+  background-color: black;
+  color: white;
+  border-radius: 12.8px;
+  padding: 15px;
+  font-weight: bolder;
+  position: relative; top: -30px;
+  position: relative; left: -20px;
+  box-shadow: 2.5px 5px 5px 2.5px black;
 }
+
+#pCardCount, #cCardCount  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  size: 15px;
+  margin-right: 25%;
+}
+
+button {
+  border: 1vmin solid gray;
+  font-family: sans-serif;
+  background-color: white;
+  color: black;
+  border-radius: 12.8px;
+  padding: 20px;
+  font-weight: bolder;
+  box-shadow: 2.5px 5px 5px 2.5px black;
+}
+
+
+
+
+
+
+
+
+
