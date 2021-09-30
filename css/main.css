@@ -30,7 +30,7 @@ h1 {
 #pDeck, #cDeck, #pInPlay, #cInPlay {
   display: flex;
   border: 0.1vmin solid grey;
-  padding: 50px;
+  /* padding: 50px; */
   justify-content: center;
   align-items: center;
   box-shadow: 5px 10px 10px 5px black;
@@ -50,7 +50,7 @@ h1 {
   padding: 15px;
   font-weight: bolder;
   position: relative; 
-  left: -20px;
+  margin-left: -25px;
   box-shadow: 2.5px 5px 5px 2.5px black;
 }
 

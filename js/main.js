@@ -33,6 +33,8 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
+bgPlayer.volume = .5;
+
 /*----- event listeners -----*/
 
 playBtnEl.addEventListener('click', handlePlay);
@@ -164,15 +166,15 @@ function winner() {
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      spread: 3000
+      spread: 300
     });
   } else if (cDeck.length >= 35) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      spread: 3000
-    });
+      spread: 300
+    })
   }
 }
 
