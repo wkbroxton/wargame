@@ -167,19 +167,19 @@ function getNewShuffledDeck() {
 }
 
 function winner() {
-  if (pDeck.length >= 35) {
+  if (pDeck.length >= 52) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      spread: 300
+      spread: 900
     });
-  } else if (cDeck.length >= 35) {
+  } else if (cDeck.length >= 52) {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
     confetti({
-      spread: 300
+      spread: 900
     })
   }
 }
