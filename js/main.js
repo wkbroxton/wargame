@@ -37,9 +37,9 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
-bgPlayer.volume = .3;
+bgPlayer.volume = .4;
 fight.volume = 1;
-cardWhoosh.volume = .5;
+cardWhoosh.volume = .6;
 
 /*----- event listeners -----*/
 
@@ -92,6 +92,7 @@ function winningHand() {
 }
 
 function renderWarButton() {
+  bgPlayer.volume = .1;
   fight.play();
   document.querySelector('body').style.backgroundColor = '#71130C';
   warBtnEl.style.visibility = "visible";
@@ -100,6 +101,7 @@ function renderWarButton() {
 }
 
 function warBegins() {
+  bgPlayer.volume = .3;
   cardWhoosh.play();
   pHand.unshift(pDeck.pop(), pDeck.pop(), pDeck.pop());
   cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
