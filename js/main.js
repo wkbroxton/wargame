@@ -12,7 +12,6 @@ const faceLookup = {
 
 const cardWhoosh = new Audio('sounds/flick.mp3');
 const fight = new Audio('sounds/warDrums.mp3');
-const whoosh = new Audio('sounds/whoosh.wav');
 const yay = new Audio('sounds/celebrate.wav');
 
 const masterDeck = buildMasterDeck();
