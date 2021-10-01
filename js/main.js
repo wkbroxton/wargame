@@ -10,6 +10,12 @@ const faceLookup = {
   "A": 14
 }
 
+const sounds = {
+  card: '',
+  fight: '',
+  yay: '',
+}
+
 const masterDeck = buildMasterDeck();
 const msgEl = document.querySelector('h1');
 
@@ -33,7 +39,7 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
-bgPlayer.volume = .5;
+bgPlayer.volume = .3;
 
 /*----- event listeners -----*/
 
@@ -41,7 +47,7 @@ playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
 replayBtnEl.addEventListener('click', reset);
 
-// document.getElementById('play-btn').addEventListener('click', handlePlaySound);
+// document.getElementById('playBtn').addEventListener('click', handlePlaySound);
 bgCheckbox.addEventListener('change', handleBgChanged);
 
 /*----- functions -----*/
@@ -58,14 +64,14 @@ function init() {
 
 }
 
+// function PlaySound(){
+//   player.src = sounds[name];
+//   player.play();
+// }
+
 // function handlePlaySound(){
 //   const selSoundImp = document.querySelector('input [name= "sound"]; checked');
 //   handlePlaySound(selSoundImp.value);
-// }
-
-// function playSound(name) {
-//   bgPlayer.src = sounds[name];
-//   bgPlayer.play();
 // }
 
 function handleBgChanged(){
@@ -98,10 +104,10 @@ function winningHand() {
 }
 
 function renderWarButton() {
-  document.querySelector('body').style.backgroundColor = 'red';
+  document.querySelector('body').style.backgroundColor = '#71130C';
   warBtnEl.style.visibility = "visible";
   playBtnEl.style.visibility = "hidden";
-  msgEl.innerHTML = "WELCOME TO THE WARZONE";
+  msgEl.innerHTML = "WELCOME TO THE WARZONE - 3 Cards up for Grabs!";
 }
 
 function warBegins() {
@@ -117,7 +123,7 @@ function unrenderWarButton() {
     document.querySelector('body').style.backgroundColor = 'white';
     warBtnEl.style.visibility = "hidden";
     playBtnEl.style.visibility = "visible"; {
-      msgEl.innerHTML = "WHO SHALL BE VICTORIOUS?!?!";
+      msgEl.innerHTML = "THE BATTLE'S NOT OVER";
     }
   }
 }
