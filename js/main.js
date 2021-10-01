@@ -10,9 +10,9 @@ const faceLookup = {
   "A": 14
 }
 
-const cardWhoosh = new Audio('/Users/williambroxton/code/wargame/sounds/flick.mp3');
-const fight = new Audio('/Users/williambroxton/code/wargame/sounds/warDrums.mp3');
-const yay = new Audio('/Users/williambroxton/code/wargame/sounds/celebrate.wav');
+const cardWhoosh = new Audio('https://docs.google.com/uc?export=download&id=1ITO5pfKDlYfldMST0_cwHITz0jdSf-1h');
+const fight = new Audio('https://docs.google.com/uc?export=download&id=19dhI7hju22Efo2dgqHMi1phNs_KgAUEh');
+const yay = new Audio('https://docs.google.com/uc?export=download&id=13tDu_fvNjHuZa6h37OKjBQchbRSGxBrK');
 
 const masterDeck = buildMasterDeck();
 const msgEl = document.querySelector('h1');
