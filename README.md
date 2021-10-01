@@ -20,12 +20,21 @@ Welcome to a themed version of the classic card game of War! As an avid "casual"
     JavaScript, HTML, CSS
 
     Studio One 5
+    
 
-   > Functionality inspired by: (https://cardgames.io/war/)
+   Functionality inspired by: (https://cardgames.io/war/)
 
-   > SHOUT OUT TO [CSS Tricks](https://css-tricks.com/write-code-get-confetti/)  FOR CONFETTI!!!
+  ### SHOUT OUTS: 
+   >[CSS Tricks](https://css-tricks.com/write-code-get-confetti/)  FOR CONFETTI!!!
+   
+   My kids Sophie & Nathan for the cheers!
 
-   > And yours truly curated the sound ;)
+   My wife Samantha for the timely snacks and meals as I code throughout the wee hours of the night!
+   
+   Splice for additional sounds.
+
+>[Splice website here.](www.splice.com)
+   
 
 ## Getting Started: 
 
@@ -47,7 +56,7 @@ Here is the link to deploy the game:
 >>The score is kept numerically between the players two decks. The game ends when one player has all 52 cards.
     
 
-Rules rendered in part from [Bicycle Games](https://bicyclecards.com/how-to-play/war/)
+>>Rules rendered in part from [Bicycle Games](https://bicyclecards.com/how-to-play/war/)
 
 ## Next Steps: Planned future enhancements: 
 
