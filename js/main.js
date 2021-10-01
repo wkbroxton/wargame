@@ -10,10 +10,10 @@ const faceLookup = {
   "A": 14
 }
 
-const cardWhoosh = new Audio('/Users/williambroxton/code/wargame/sounds/flick.mp3');
-const fight = new Audio('/Users/williambroxton/code/wargame/sounds/warDrums.mp3');
-const whoosh = new Audio('sounds/flick.mp3');
-const yay = new Audio('/Users/williambroxton/code/wargame/sounds/whoosh.wav');
+const cardWhoosh = new Audio('sounds/flick.mp3');
+const fight = new Audio('sounds/warDrums.mp3');
+const whoosh = new Audio('sounds/whoosh.wav');
+const yay = new Audio('sounds/celebrate.wav');
 
 const masterDeck = buildMasterDeck();
 const msgEl = document.querySelector('h1');
@@ -38,8 +38,8 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
-bgPlayer.volume = .2;
-fight.volume = .8;
+bgPlayer.volume = .3;
+fight.volume = 1;
 cardWhoosh.volume = .5;
 
 /*----- event listeners -----*/
@@ -163,6 +163,7 @@ function winner() {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "Playstation Wins!";
     replayBtnEl.style.visibility = "visible";
+    yay.play();
     confetti({
       spread: 900
     });
@@ -170,6 +171,7 @@ function winner() {
     playBtnEl.style.visibility = "hidden";
     msgEl.innerHTML = "XBox Wins";
     replayBtnEl.style.visibility = "visible";
+    yay.play();
     confetti({
       spread: 900
     })

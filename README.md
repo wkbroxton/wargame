@@ -58,32 +58,3 @@ Rules rendered in part from [Bicycle Games](https://bicyclecards.com/how-to-play
 * A clever way to concede the battle early if the player has had enough.
 * A way to select the system you're rooting for/playing as.
 * A diagonal line that works in tow with the players Deck count to show the battle in a multifaced way.
-*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- git status (shows you whats been changed)
-git add -A
-git commit -m 'changes'
-git push --> -->
-
-<!-- When you have commits on main that you want to deploy, it's time to merge those commits into the gh-pages branch:
-
-Checkout the gh-pages branch: git checkout gh-pages
-Merge the commits from main: git merge main
-Deploy the changes: git push origin gh-pages
-Now your deployed application is up to date!
-
-Be sure to switch back to the main branch! -->
