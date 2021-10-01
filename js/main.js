@@ -10,11 +10,9 @@ const faceLookup = {
   "A": 14
 }
 
-const sounds = {
-  card: '',
-  fight: '',
-  yay: '',
-}
+const cardWhoosh = new Audio('sounds/flick.mp3');
+const fight = new Audio('sounds/warDrums.mp3');
+const yay = new Audio('sounds/flick.mp3');
 
 const masterDeck = buildMasterDeck();
 const msgEl = document.querySelector('h1');
@@ -39,7 +37,9 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
-bgPlayer.volume = .3;
+bgPlayer.volume = .2;
+fight.volume = .8;
+cardWhoosh.volume = .5;
 
 /*----- event listeners -----*/
 
@@ -47,7 +47,6 @@ playBtnEl.addEventListener('click', handlePlay);
 warBtnEl.addEventListener('click', warBegins);
 replayBtnEl.addEventListener('click', reset);
 
-// document.getElementById('playBtn').addEventListener('click', handlePlaySound);
 bgCheckbox.addEventListener('change', handleBgChanged);
 
 /*----- functions -----*/
@@ -61,25 +60,14 @@ function init() {
   pHand = [];
   cHand = [];
   render();
-
 }
 
-// function PlaySound(){
-//   player.src = sounds[name];
-//   player.play();
-// }
-
-// function handlePlaySound(){
-//   const selSoundImp = document.querySelector('input [name= "sound"]; checked');
-//   handlePlaySound(selSoundImp.value);
-// }
-
-function handleBgChanged(){
+function handleBgChanged() {
   bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
 }
 
 function handlePlay() {
-
+  cardWhoosh.play();
   let pCard = pDeck.shift();
   pHand.unshift(pCard);
   let cCard = cDeck.shift();
@@ -104,21 +92,24 @@ function winningHand() {
 }
 
 function renderWarButton() {
+  fight.play();
   document.querySelector('body').style.backgroundColor = '#71130C';
   warBtnEl.style.visibility = "visible";
   playBtnEl.style.visibility = "hidden";
-  msgEl.innerHTML = "WELCOME TO THE WARZONE - 3 Cards up for Grabs!";
+  msgEl.innerHTML = "WELCOME TO THE WARZONE - 3 Cards At Risk";
 }
 
 function warBegins() {
+  cardWhoosh.play();
   pHand.unshift(pDeck.pop(), pDeck.pop(), pDeck.pop());
   cHand.unshift(cDeck.pop(), cDeck.pop(), cDeck.pop());
   render();
   winningHand();
   unrenderWarButton();
-};
+}
 
 function unrenderWarButton() {
+  cardWhoosh.play();
   if (pHand !== cHand) {
     document.querySelector('body').style.backgroundColor = 'white';
     warBtnEl.style.visibility = "hidden";

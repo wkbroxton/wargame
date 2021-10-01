@@ -12,18 +12,18 @@ body {
 }
 
 h1 {
-  font-size: 4.5vmin;
-  letter-spacing: 2vmin;
+  font-size: 4vmin;
+  letter-spacing: 1.5vmin;
   color: Black;
-  padding: 5px;
+  padding: 8px;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 25px;
 }
 
 #board {
   display: grid;
-  grid-template-columns: 25vmin 25vmin 20vmin 25vmin 25vmin;
-  grid-template-rows: 25vmin 15vmin 25vmin;
+  grid-template-columns: 25vmin 25vmin 15vmin 25vmin 25vmin;
+  grid-template-rows: 20vmin 20vmin 20vmin 10vmin;
   font-size: 4.5vmin;
 }
 
@@ -95,7 +95,7 @@ footer  {
   display: flex;
   justify-content: center;
   align-items: center;
-  size: 15px;
+  font-size: 4vmin;
   margin-right: 25%;
 }
 

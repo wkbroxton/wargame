@@ -9,7 +9,7 @@ Welcome to a themed version of the classic card game of War! As an avid "casual"
 
 ☐ Screenshot(s):
 
-    Attached aside.
+    A
 
 
 
