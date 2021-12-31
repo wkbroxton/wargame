@@ -8,30 +8,31 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
+  margin: 1vmin;
 }
 
-h1 {
+#title-card {
   font-size: 4vmin;
   letter-spacing: 1.5vmin;
   color: Black;
-  padding: 8px;
+  padding: .5em;
   text-align: center;
-  margin: 25px;
+  margin: 1vmin 1vmin 5vmin 1vmin;
 }
 
 #board {
   display: grid;
-  grid-template-columns: 20vmin 20vmin 15vmin 20vmin 20vmin;
-  grid-template-rows: 20vmin 20vmin 20vmin 10vmin;
+  justify-items: center;
+  grid-template-columns: 22vmin 19vmin 15vmin 19vmin 22vmin;
+  grid-template-rows: 23vmin 25vmin 23vmin 10vmin;
   font-size: 4.5vmin;
 }
 
 #pDeck, #cDeck, #pInPlay, #cInPlay {
-  display: flex;
   border: 0.1vmin solid grey;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 10px 10px 5px black;
+  /* justify-content: center;
+  align-items: center; */
+  box-shadow: .35em .8em .80em .35em black;
 }
 
 #TP, #TX {
@@ -39,22 +40,37 @@ h1 {
   justify-content: center;
 }
 
+#play-btn {
+  justify-content: space-around;
+  align-content: center;
+}
+
 #play {
   border: 1vmin solid rgb(49, 49, 49);
   font-family: sans-serif;
   background-color: black;
   color: white;
-  border-radius: 12.8px;
-  padding: 15px;
+  border-radius: 1em;
+  padding: .5em;
   font-weight: bolder;
   position: relative; 
-  margin-left: -25px;
-  box-shadow: 2.5px 5px 5px 2.5px black;
+  box-shadow: .15em .35em .35em .15em black;
 }
 
-footer  {
+#foot {
   display: flex;
-  justify-content: space-around;
+  justify-content: right;
+  align-items: flex-end;
+  margin-right: .75em;
+  width: 100vw;
+  font-size: 1vmax;
+}
+
+#battle {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1vmax;
+  justify-content: left;
 }
 
 #war  {
@@ -62,15 +78,15 @@ footer  {
   text-align: center;
   border: 1vmin solid rgb(49, 49, 49);
   font-family: sans-serif;
-  background-color: black;
-  color: white;
-  border-radius: 12.8px;
-  padding: 15px;
+  background-color: rgb(151, 14, 14);
+  color: whitesmoke;
+  border-radius: 1em;
+  padding: .2em;
   font-weight: bolder;
-  font-size: 1vmax;
-  position: relative; top: -30px;
-  position: relative; left: -20px;
-  box-shadow: 2.5px 5px 5px 2.5px black;
+  font-size: .75em;
+  box-shadow: .15em .35em .35em .15em black;
+  justify-items: center;
+  align-content: center;
 }
 
 
@@ -81,13 +97,12 @@ footer  {
   font-family: sans-serif;
   background-color: black;
   color: white;
-  border-radius: 12.8px;
-  padding: 15px;
+  border-radius: 1em;
+  padding: .5em;
   font-weight: bolder;
   position: relative; top: -30px;
   position: relative; left: -20px;
-  box-shadow: 2.5px 5px 5px 2.5px black;
-  
+  box-shadow: .15em .35em .35em .15em black;
 }
 
 #pCardCount, #cCardCount  {
@@ -99,16 +114,16 @@ footer  {
 }
 
 button {
-  border: 1vmin solid gray;
+  border: 1vmax solid gray;
   font-family: sans-serif;
   background-color: white;
   color: black;
-  border-radius: 12.8px;
-  padding: 20px;
+  border-radius: 1vmin;
+  padding: .5vmin;
+  font-size: 1vmin;
   font-weight: bolder;
-  box-shadow: 2.5px 5px 5px 2.5px black;
+  box-shadow: .15em .35em .35em .15em black;
 }
-
 
 @media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
 @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }

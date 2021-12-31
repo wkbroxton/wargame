@@ -37,8 +37,8 @@ const player = new Audio();
 const bgPlayer = document.getElementById('bg-player');
 const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
-bgPlayer.volume = .4;
-fight.volume = 1;
+bgPlayer.volume = .3;
+fight.volume = .5;
 cardWhoosh.volume = .6;
 
 /*----- event listeners -----*/
@@ -55,8 +55,8 @@ init();
 
 function init() {
   let shuffledDeck = getNewShuffledDeck();
-  pDeck = shuffledDeck.splice(0, 26);
-  cDeck = shuffledDeck;
+  cDeck = shuffledDeck.splice(0, 26);
+  pDeck = shuffledDeck;
   pHand = [];
   cHand = [];
   render();
